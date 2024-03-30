@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+            rel="stylesheet"
+            href="https://pro.fontawesome.com/releases/v5.15.2/css/all.css"
+        />
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    main {
+        display: flex;
+        align-items: center;
+        background: rgba(196, 214, 209, 0.432);
+    }
+    nav {
+        overflow-x: hidden ;
+    }
+    div {
+        display: flex;
+         /* transform: translateX(-50%);  */
+        transition: all 0.5s;
+    }
+    img {
+         /* width: 50%;  */
+        aspect-ratio: 1/1;
+        object-fit: cover;
+    }
+    i {
+        padding: 10px;
+        font-size: 30px;
+        cursor: pointer;
+        color: rgb(255, 163, 179);
+    }
+</style>
+<body>
+    <main>
+        <i class="far fa-pig" id="arrowleft"></i>
+        <nav>
+            <div id="carusel">
+                <img src="https://img.freepik.com/free-photo/hairy-pig-with-pink-snout-wirey-hair_493961-833.jpg?t=st=1711810170~exp=1711813770~hmac=c1b326edd894033734f55041fbdfae8d4ff0d13a5efd39f42dca3dbadbb5f6bf&w=1060"/>
+                <img src="https://img.freepik.com/free-photo/adorable-baby-pigs-farm_23-2149066177.jpg?t=st=1711810211~exp=1711813811~hmac=8f518b5315b40c6d81220564eae9c6196de6583a1e24b6bd9716cdcb6af2e62f&w=740"/>
+                <img src="https://img.freepik.com/free-photo/absolutely-adorable-pig-looking-up_493961-332.jpg?t=st=1711810229~exp=1711813829~hmac=e9cf3dca27614e6ff5807e0d719dbd609273b5ee69afba27a1bbf8c29ca2688f&w=1380"/>
+                <img src="https://img.freepik.com/free-photo/overhead-view-black-pig_23-2147923861.jpg?t=st=1711810252~exp=1711813852~hmac=f4ef1cef701edbc9975cdf2cb6128ec1b3457e46e9c0c36e2c089223ca76a93c&w=740"/>
+                <img src="https://img.freepik.com/free-photo/closeup-shot-three-domesticated-pigs_181624-44776.jpg?t=st=1711810267~exp=1711813867~hmac=3d9c2ab55f3d7f4264fefff65308bc687aa6d3a461d3d6ee6a63e280de466169&w=1380"/>
+                
+            </div>
+        </nav>
+        <i class="far fa-piggy-bank" id="arrowright" ></i>
+    </main>
+    <script>
+        let arrowleft = document.getElementById("arrowleft")
+        let arrowright = document.getElementById("arrowright")
+        let carusel = document.getElementById("carusel")
+
+        let caruselElem = 3
+        let width = 100 / caruselElem
+        let item = carusel.children.length - caruselElem;
+        let current = 0;
+
+        for(const i of carusel.children) {
+            i.style.width = width + "%";
+        }
+
+        arrowright.addEventListener("click" , clickright) ;
+        
+        function clickright() {
+            current += 1
+            if (current > item) {
+                current = 0
+            }
+            carusel.style.transform = `translateX(-${width * current}%)`
+        }
+        arrowleft.addEventListener("click" , clickleft) ;
+        
+        function clickleft() {
+            current -= 1
+            if (current < 0) {
+                current = item
+            }
+            carusel.style.transform = `translateX(-${width * current}%)`
+        }
+        
+    </script>
+    
+</body>
+</html>

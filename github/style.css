@@ -62,11 +62,11 @@ h5 {
 @keyframes loadPage {
   0% {
     transform: rotate(0deg) scale(0.8); 
-    background: #00ffff;
+    background: #00ffaa;
   }
    50% {
     transform: rotate(180deg) scale(1.2);
-    background: #ff0000;
+    background: #e5ff00;
    }
   100% {
      transform: rotate(360deg) scale(0.8);
