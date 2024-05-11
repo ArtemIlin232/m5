@@ -67,6 +67,7 @@
         clear();
         drawEat();
         drawSnake();
+        finish();
        }
 
        function drawSnake () {
@@ -107,6 +108,41 @@
             eat.x = getRandomInt(0, canvas.width / grid) * grid;
             eat.y = getRandomInt(0, canvas.width / grid) * grid;
           }
+       }
+       document.addEventListener("keydown" , (e)=> {
+        if (e.code == "KeyA" && snake.dx == 0) {
+          snake.dx = -grid;
+          snake.dy = 0;
+        } else if (e.code == "KeyD" && snake.dx == 0) {
+          snake.dx = grid;
+          snake.dy = 0;
+        } else if (e.code == "KeyW" && snake.dy == 0) {
+          snake.dx = 0;
+          snake.dy = -grid;
+        } else if (e.code == "KeyS" && snake.dy == 0) {
+          snake.dx = 0;
+          snake.dy = grid;
+        }
+        
+       }
+      );
+       function finish() {
+        for (let i = 1; i < snake.tails.length; i++) {
+          if (
+            snake.tails[i].x == snake.x &&
+            snake.tails[i].y == snake.y
+          ) {
+            snake = {
+              speed: 4,
+              x: 0,
+              y: 0,
+              dx: grid,
+              dy: 0,
+              tails: [],
+              countTails: 10,
+            };
+          }
+        }
        }
 
        requestAnimationFrame(start);
